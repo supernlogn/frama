@@ -68,8 +68,6 @@ Feel free to send me your own examples! Thanks!
 
 Always Gratefull to help others!!!
 
-## Performance
-<!-- TODO -->
 
 ## References
 1. Ehlers, John. "FRAMA–Fractal Adaptive Moving Average." Technical Analysis of Stocks & Commodities (2005).
