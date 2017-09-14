@@ -23,7 +23,7 @@ So it should look something like this:
 ```
 Now the problem is how do we calculate alpha at each step?
 
-Alpha is changed according to something called the fractal dimension.
+`alpha` is changed according to something called the fractal dimension.
 
 So alpha is calculated as 
 ```math
