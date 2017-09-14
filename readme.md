@@ -32,7 +32,7 @@ So alpha is calculated as
 The fractal dimension id D needs to be computed at every iteration step.
 The fractal dimension is defined by this relation:
 
-[eq2](eq2.png)
+![eq2](eq2.png)
 where `N1` and `N2` are defined as: 
 ```python
     N1 = (max(v1) - min(v1)) / batch
