@@ -26,9 +26,9 @@ Now the problem is how do we calculate alpha at each step?
 `alpha` is changed according to something called the fractal dimension.
 
 So alpha is calculated as 
-```math
-    alpha = exp(-4.6\times(D-1))
-```
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=alpha&space;=&space;exp(-4.6\times(D-1))" target="_blank"><img src="https://latex.codecogs.com/png.latex?alpha&space;=&space;exp(-4.6\times(D-1))" title="alpha = exp(-4.6\times(D-1))" /></a>
+
 The fractal dimension id D needs to be computed at every iteration step.
 The fractal dimension is defined by this relation:
 ```math
