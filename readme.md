@@ -27,12 +27,12 @@ Now the problem is how do we calculate alpha at each step?
 
 So alpha is calculated as 
 
-![eq1](eq1.png)
+![eq1](images/eq1.png)
 
 The fractal dimension id D needs to be computed at every iteration step.
 The fractal dimension is defined by this relation:
 
-![eq2](eq2.png)
+![eq2](images/eq2.png)
 where `N1` and `N2` are defined as: 
 ```python
     N1 = (max(v1) - min(v1)) / batch
