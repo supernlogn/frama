@@ -14,7 +14,7 @@ length of the data timestamps type (sec, minutes, hours, days,...).
 
 + Compiled with `Python 2.7.6`
 ## More Details
-To present more details we wil use a top-down approach.
+To present more details we will use a top-down approach.
 The algorithm uses an adaptive low-pass filter with one term `alpha`.
 So it should look something like this:
 ```python
