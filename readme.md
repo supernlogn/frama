@@ -27,7 +27,7 @@ Now the problem is how do we calculate alpha at each step?
 
 So alpha is calculated as 
 
-![eq1](https://latex.codecogs.com/png.latex?alpha&space;=&space;exp(-4.6\times(D-1)))
+![alt text](https://latex.codecogs.com/png.latex?alpha&space;=&space;exp(-4.6\times(D-1)) "eq1")
 
 The fractal dimension id D needs to be computed at every iteration step.
 The fractal dimension is defined by this relation:
