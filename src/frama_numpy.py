@@ -17,10 +17,12 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
-# Below is the frama code written
-# in numpy following the example
-# by John Ehlers: http://www.stockspotter.com/Files/frama.pdf
-# This implementation is for educational purposes
+"""
+Below is the frama code written
+in numpy following the example
+by John Ehlers: http://www.stockspotter.com/Files/frama.pdf
+This implementation is for educational purposes
+"""
 
 import numpy as np
 from matplotlib import pyplot as plt
