@@ -20,7 +20,7 @@
 # Below is the frama code written
 # in numpy and utilizing it for
 # performance.
-
+__all__ = ['frama_perf']
 import numpy as np
 
 def frama_perf(InputPrice, batch):
