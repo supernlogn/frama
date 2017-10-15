@@ -17,10 +17,13 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
-# Below is the frama code written
-# in numpy and utilizing it for
-# performance.
+"""
+ Below is the frama code written
+ in numpy and utilizing it for
+ performance.
+"""
 __all__ = ['frama_perf']
+
 import numpy as np
 
 def frama_perf(InputPrice, batch):
