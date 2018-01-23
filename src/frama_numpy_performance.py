@@ -48,7 +48,7 @@ def frama_perf(InputPrice, batch):
     # calculate the fractal dimensions
     Dimen = np.zeros(N1.shape)
     Dimen_indices = np.bitwise_and(np.bitwise_and((N1 > 0), (N2 > 0)), (N3 > 0))
-    lg2 = np.log2(0.5)
+    lg2 = 1.0 / np.log2(2)
     Dimen[Dimen_indices] = (np.log2(N1 + N2) - np.log2(N3)) * lg2
 
     # calculate the filter factor
