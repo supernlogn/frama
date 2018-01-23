@@ -39,8 +39,8 @@ def frama_perf(InputPrice, batch):
     L = np.array([np.min(InputPrice[i:i+batch]) for i in range(0, Length-batch, 1)])
 
     # set the N-variables
-    b = 1.0 / batch
-    N12 = (H - L) * b
+    b_inv = 1.0 / batch
+    N12 = (H - L) * b_inv
     N1 = N12[0:-1]
     N2 = N12[1:]
     N3 = ( np.array([np.max(H[i:i+1]) for i in range(0, len(H) - 1)]) - np.array([np.min(L[i:i+1]) for i in range(0, len(H) - 1)]) ) / batch
@@ -48,8 +48,8 @@ def frama_perf(InputPrice, batch):
     # calculate the fractal dimensions
     Dimen = np.zeros(N1.shape)
     Dimen_indices = np.bitwise_and(np.bitwise_and((N1 > 0), (N2 > 0)), (N3 > 0))
-    lg2 = 1.0 / np.log2(2)
-    Dimen[Dimen_indices] = (np.log2(N1 + N2) - np.log2(N3)) * lg2
+    lg2_inv = 1.0 / np.log2(2)
+    Dimen[Dimen_indices] = (np.log2(N1 + N2) - np.log2(N3)) * lg2_inv
 
     # calculate the filter factor
     alpha = np.exp(-4.6*(Dimen) - 1)
