@@ -39,7 +39,8 @@ def frama_perf(InputPrice, batch):
     L = np.array([np.min(InputPrice[i:i+batch]) for i in range(0, Length-batch, 1)])
 
     # set the N-variables
-    N12 = (H - L) / batch
+    b = 1.0 / batch
+    N12 = (H - L) * b
     N1 = N12[0:-1]
     N2 = N12[1:]
     N3 = ( np.array([np.max(H[i:i+1]) for i in range(0, len(H) - 1)]) - np.array([np.min(L[i:i+1]) for i in range(0, len(H) - 1)]) ) / batch
