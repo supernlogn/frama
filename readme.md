@@ -12,7 +12,8 @@ length of the data timestamps type (sec, minutes, hours, days,...).
 ## Libraries & Dependencies
 + `Numpy`
 
-+ Compiled with `Python 2.7.6`
++ Works both in `Python 2.7.6` and `Python 3+` 
+
 ## More Details
 To present more details we will use a top-down approach.
 The algorithm uses an adaptive low-pass filter with one term `alpha`.

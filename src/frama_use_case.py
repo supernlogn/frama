@@ -25,7 +25,7 @@ from matplotlib import pyplot as plt
 Length = 10000
 x = np.linspace(0,10 * np.pi, Length)
 Price = 2 * np.sin(x)
-Price[Length/2:Length] += 3
+Price[int(Length/2):Length] += 3
 Noise = 0.2 * np.random.randn(Price.shape[0]) # white noise
 InputPrice = Price + Noise
 batch = 100
