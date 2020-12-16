@@ -66,7 +66,7 @@ for i in range(0, Length-batch, 1):
         Dimen = (np.log(N1 + N2) - np.log(N3)) / np.log(2)
 
     # calculate lowpass filter factor
-    alpha = np.exp(-4.6*(Dimen) - 1)
+    alpha = np.exp(-4.6*(Dimen - 1))
     alpha = np.max([alpha, 0.1])
     alpha = np.min([alpha, 1])    
     
