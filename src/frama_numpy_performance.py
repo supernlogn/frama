@@ -53,7 +53,7 @@ def frama_perf(InputPrice, batch):
     Dimen[Dimen_indices] = d[Dimen_indices]
 
     # calculate the filter factor
-    alpha = np.exp(-4.6*(Dimen) - 1)
+    alpha = np.exp(-4.6 * (Dimen - 1))
     alpha = np.clip(alpha, 0.1, 1)
 
 
