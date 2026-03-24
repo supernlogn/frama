@@ -75,7 +75,7 @@ Now `N3` is defined as
 and is the maximum over both batches and devided by the number of 
 data points inside them.
 
-Now, if you go from down up it will result in the code inside `frama_numpy.py`.
+Now, if you go from down up it will result in the code inside `frama_educative.py`.
 
 If still not satisfied from the explanation check the code and the References.
 ## Results Galery
