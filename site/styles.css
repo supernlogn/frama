@@ -1,0 +1,261 @@
+:root {
+  --bg: #f7f3ea;
+  --panel: #fffaf1;
+  --ink: #243247;
+  --muted: #5a6677;
+  --line: #d7ccba;
+  --accent: #e46f4f;
+  --accent-2: #2a9c91;
+  --shadow: 0 16px 50px rgba(38, 42, 61, 0.12);
+  --radius: 18px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Space Grotesk", "Trebuchet MS", sans-serif;
+  color: var(--ink);
+  background: radial-gradient(circle at 20% 15%, #fff5df 0%, transparent 38%),
+    radial-gradient(circle at 78% 8%, #d7efe9 0%, transparent 30%),
+    linear-gradient(180deg, var(--bg) 0%, #f1ebdf 100%);
+  min-height: 100vh;
+  line-height: 1.6;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.ambient {
+  position: fixed;
+  width: 50vw;
+  height: 50vw;
+  border-radius: 999px;
+  pointer-events: none;
+  filter: blur(90px);
+  opacity: 0.22;
+  z-index: 0;
+}
+
+.ambient-top {
+  top: -22vw;
+  left: -16vw;
+  background: #f1977a;
+}
+
+.ambient-bottom {
+  right: -16vw;
+  bottom: -18vw;
+  background: #42b4a8;
+}
+
+.container {
+  width: min(1100px, calc(100% - 2rem));
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.hero {
+  padding: 4.8rem 0 2.8rem;
+}
+
+.eyebrow {
+  color: var(--accent-2);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin: 0;
+  font-size: 0.86rem;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "IBM Plex Serif", Georgia, serif;
+  line-height: 1.2;
+  margin: 0 0 0.7rem;
+}
+
+h1 {
+  font-size: clamp(2.1rem, 5vw, 4rem);
+  margin-top: 0.35rem;
+}
+
+h2 {
+  font-size: clamp(1.35rem, 2.3vw, 2rem);
+}
+
+.lede {
+  max-width: 68ch;
+  color: var(--muted);
+  margin: 0.8rem 0 0;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 0.8rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.68rem 1rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  text-decoration: none;
+  font-weight: 700;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn-primary {
+  background: linear-gradient(110deg, var(--accent), #ef9a62);
+  color: #1f2430;
+  box-shadow: 0 9px 26px rgba(228, 111, 79, 0.35);
+}
+
+.btn-ghost {
+  border-color: #cabda6;
+  color: var(--ink);
+  background: rgba(255, 249, 238, 0.75);
+}
+
+.stack {
+  display: grid;
+  gap: 1.25rem;
+  margin-bottom: 2.2rem;
+}
+
+.panel {
+  background: color-mix(in srgb, var(--panel) 90%, white 10%);
+  border: 1px solid #e4d8c7;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: clamp(1rem, 2.5vw, 1.6rem);
+}
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 1rem;
+}
+
+pre {
+  margin: 0.45rem 0 0.95rem;
+  padding: 0.85rem 1rem;
+  border-radius: 12px;
+  background: #2a313f;
+  color: #f4f7fb;
+  overflow: auto;
+  border: 1px solid #3d4757;
+}
+
+ul {
+  margin: 0.4rem 0 0;
+  padding-left: 1.1rem;
+}
+
+.muted {
+  color: var(--muted);
+  margin-top: 0.65rem;
+}
+
+.equation-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.equation-grid figure {
+  margin: 0;
+  background: #fffdf8;
+  border: 1px solid #eadfcf;
+  border-radius: 14px;
+  padding: 0.75rem;
+}
+
+.equation-grid img {
+  display: block;
+  width: 100%;
+  max-height: 160px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.equation-grid figcaption {
+  margin-top: 0.45rem;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.card {
+  margin: 0;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid #e4d8c7;
+  background: #fffdf8;
+}
+
+.card-wide {
+  grid-column: 1 / -1;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  max-height: 460px;
+  object-fit: cover;
+  display: block;
+}
+
+.card figcaption {
+  padding: 0.7rem 0.85rem;
+  font-size: 0.93rem;
+  color: var(--muted);
+  border-top: 1px solid #efe4d6;
+}
+
+.footer {
+  padding: 0.35rem 0 2rem;
+  color: var(--muted);
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  .two-col,
+  .equation-grid,
+  .gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    padding-top: 3.2rem;
+  }
+
+  .card-wide {
+    grid-column: auto;
+  }
+
+  .card img {
+    max-height: 340px;
+  }
+}

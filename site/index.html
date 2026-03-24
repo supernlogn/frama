@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FRAMA in Python</title>
+    <meta
+      name="description"
+      content="Fractal Adaptive Moving Average in Python with NumPy and PyTorch implementations, examples, and GLD market comparison plots."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@500;700&family=Space+Grotesk:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="ambient ambient-top"></div>
+    <div class="ambient ambient-bottom"></div>
+
+    <header class="hero container">
+      <p class="eyebrow">Fractal Adaptive Moving Average</p>
+      <h1>FRAMA in Python</h1>
+      <p class="lede">
+        A compact, practical implementation of FRAMA with both NumPy and PyTorch,
+        plus synthetic and real-market use cases.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="https://github.com/supernlogn/frama">View Repository</a>
+        <a class="btn btn-ghost" href="#quick-start">Quick Start</a>
+      </div>
+    </header>
+
+    <main class="container stack">
+      <section class="panel intro">
+        <h2>Introduction</h2>
+        <p>
+          The aim of this repository is to provide functions of FRAMA written in
+          python for both educational and industrial purposes. FRAMA is a state of
+          the art Moving Average estimator(or was by the time u read this...). It
+          is used in economics for stock prices and Wall Street stuff, but it can
+          also be used from anyone as a better moving average algorithm. It works
+          better on time series which present the same shape despite the length of
+          the data timestamps type (sec, minutes, hours, days,...).
+        </p>
+      </section>
+
+      <section id="quick-start" class="panel two-col">
+        <div>
+          <h2>Quick Start</h2>
+          <p>Run the synthetic examples:</p>
+          <pre><code>python src/frama_use_case.py</code></pre>
+          <p>Run the GLD market comparison:</p>
+          <pre><code>pip install yfinance
+python src/frama_gld_use_case.py</code></pre>
+        </div>
+        <div>
+          <h3>Dependencies</h3>
+          <ul>
+            <li>NumPy for baseline implementation</li>
+            <li>PyTorch for tensor implementation</li>
+            <li>Matplotlib for plotting</li>
+            <li>yfinance for GLD data download</li>
+          </ul>
+          <p class="muted">Works with Python 3+.</p>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Algorithm Snapshot</h2>
+        <p>
+          FRAMA is an adaptive low-pass filter where the smoothing factor changes
+          with estimated fractal dimension.
+        </p>
+        <div class="equation-grid">
+          <figure>
+            <img src="images/eq1.png" alt="FRAMA alpha equation" />
+            <figcaption>Adaptive alpha term</figcaption>
+          </figure>
+          <figure>
+            <img src="images/eq2.png" alt="FRAMA fractal dimension equation" />
+            <figcaption>Fractal dimension estimate</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Result Gallery</h2>
+        <div class="gallery">
+          <figure class="card card-wide">
+            <img src="images/gld_frama_compare.png" alt="GLD NumPy vs PyTorch FRAMA comparison" />
+            <figcaption>GLD market data comparison: NumPy vs PyTorch FRAMA</figcaption>
+          </figure>
+
+          <figure class="card">
+            <img src="images/frama_plot_noise_0.5.png" alt="Noise 0.5 FRAMA plot" />
+            <figcaption>Noise level 50%</figcaption>
+          </figure>
+          <figure class="card">
+            <img src="images/frama_plot_noise_0.2.png" alt="Noise 0.2 FRAMA plot" />
+            <figcaption>Noise level 20%</figcaption>
+          </figure>
+          <figure class="card">
+            <img src="images/frama_plot_noise_0.1.png" alt="Noise 0.1 FRAMA plot" />
+            <figcaption>Noise level 10%</figcaption>
+          </figure>
+          <figure class="card">
+            <img src="images/frama_plot_batch_10.png" alt="Batch 10 FRAMA plot" />
+            <figcaption>Batch size 10</figcaption>
+          </figure>
+          <figure class="card">
+            <img src="images/frama_plot_batch_100.png" alt="Batch 100 FRAMA plot" />
+            <figcaption>Batch size 100</figcaption>
+          </figure>
+        </div>
+      </section>
+    </main>
+
+    <footer class="container footer">
+      <p>
+        Reference: John Ehlers, Fractal Adaptive Moving Average (2005)
+      </p>
+    </footer>
+  </body>
+</html>
