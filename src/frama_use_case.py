@@ -20,7 +20,7 @@
 import numpy as np
 import importlib
 
-from frama_performance import fram_perf, frama_perf_torch
+from frama_performance import frama_perf, frama_perf_torch
 
 
 def create_input(length=10000, noise_scale=0.2, seed=123):
@@ -36,7 +36,7 @@ def create_input(length=10000, noise_scale=0.2, seed=123):
 
 def run_numpy_example(input_price, batch):
     """Usage example for fram_perf (NumPy implementation alias)."""
-    return fram_perf(input_price, batch)
+    return frama_perf(input_price, batch)
 
 
 def run_torch_example(input_price, batch):
@@ -88,7 +88,7 @@ def plot_results(price, input_price, filt_numpy, filt_torch, noise_scale, batch,
         ax.tick_params(colors=palette['text'])
 
     ax1.plot(price, label='real price', linewidth=2.8, color=palette['price'])
-    ax1.plot(filt_numpy, label='estimated price (numpy)', linewidth=2.0, color=palette['numpy'])
+    ax1.plot(filt_numpy, label='estimated price (numpy)', linewidth=1.5, color=palette['numpy'])
     if filt_torch is not None:
         ax1.plot(
             filt_torch,
@@ -101,7 +101,7 @@ def plot_results(price, input_price, filt_numpy, filt_torch, noise_scale, batch,
     ax1.legend(frameon=True, facecolor=palette['axes_bg'], edgecolor=palette['grid'])
 
     ax2.plot(input_price, label='price + noise', linewidth=2.6, color=palette['input'], alpha=0.9)
-    ax2.plot(filt_numpy, label='estimated price (numpy)', linewidth=2.0, color=palette['numpy'])
+    ax2.plot(filt_numpy, label='estimated price (numpy)', linewidth=1.5, color=palette['numpy'])
     if filt_torch is not None:
         ax2.plot(
             filt_torch,
@@ -126,7 +126,7 @@ def plot_results(price, input_price, filt_numpy, filt_torch, noise_scale, batch,
         plt.show()
 
 def createPlots():
-    batch = 10
+    batch = 20
     for noise_scale in [0.1, 0.2, 0.5]:
         price, input_price = create_input(length=10000, noise_scale=noise_scale)
         filt_numpy = run_numpy_example(input_price, batch)

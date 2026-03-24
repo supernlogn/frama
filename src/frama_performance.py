@@ -22,7 +22,7 @@
  in numpy and utilizing it for
  performance.
 """
-__all__ = ['frama_numpy_perf', 'fram_perf', 'frama_perf_torch']
+__all__ = ['frama_numpy_perf', 'frama_perf', 'frama_perf_torch']
 
 import numpy as np
 
@@ -69,7 +69,7 @@ def frama_numpy_perf(InputPrice, batch):
     return Filt
 
 
-def fram_perf(InputPrice, batch):
+def frama_perf(InputPrice, batch):
     """Backward-compatible alias for frama_perf."""
     return frama_numpy_perf(InputPrice, batch)
 
@@ -117,7 +117,8 @@ def frama_perf_torch(InputPrice, batch, device=None, dtype=None):
     Dimen_indices = (N1 > 0) & (N2 > 0) & (N3 > 0)
     lg2_inv = 1.0 / torch.log2(torch.tensor(2.0, device=x.device, dtype=x.dtype))
     d = (torch.log2(N1 + N2) - torch.log2(N3)) * lg2_inv
-    Dimen[Dimen_indices] = d[Dimen_indices]
+    # Dimen[Dimen_indices] = d[Dimen_indices]
+    Dimen = torch.where(Dimen_indices, d, torch.zeros_like(N1))
 
     # calculate the filter factor
     alpha = torch.exp(-4.6 * (Dimen - 1))

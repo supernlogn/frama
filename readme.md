@@ -38,6 +38,23 @@ This will:
     - `images/frama_plot_batch_50.png`
     - `images/frama_plot_batch_100.png`
 
+## Real Market Data Use Case
+
+To demonstrate FRAMA on real market data, you can use the GLD (Gold Index) use case:
+
+```bash
+pip install yfinance
+python src/frama_gld_use_case.py
+```
+
+This will:
+- Fetch 1 year of GLD historical data from yfinance
+- Apply both `frama_perf` (NumPy) and `frama_perf_torch` (PyTorch)
+- Print comparison metrics (MAE, RMSE, max absolute difference) and runtime
+- Generate a comparison plot at `images/gld_frama_compare.png`
+
+The script aligns FRAMA and price on the same start index so visual lag reflects the filter behavior, not plotting offset.
+
 
 ## Explanation
 To present the inside workings we will use a top-down approach.
@@ -78,7 +95,9 @@ data points inside them.
 Now, if you go from down up it will result in the code inside `frama_educative.py`.
 
 If still not satisfied from the explanation check the code and the References.
-## Results Galery
+## Results Gallery
+
+![GLD FRAMA Comparison](/images/gld_frama_compare.png)
 
 ![First example](/images/frama_plot_noise_0.5.png)
 
@@ -89,6 +108,7 @@ If still not satisfied from the explanation check the code and the References.
 ![Fourth example](/images/frama_plot_batch_10.png)
 
 ![Fifth example](/images/frama_plot_batch_100.png)
+
 
 Feel free to send me your own examples! Thanks!
 
