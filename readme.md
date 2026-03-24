@@ -10,12 +10,37 @@ length of the data timestamps type (sec, minutes, hours, days,...).
 
 
 ## Libraries & Dependencies
-+ `Numpy`
 
-+ Works both in `Python 2.7.6` and `Python 3+` 
++ `Numpy` for the basic implementation
++ `Pytorch` not obligatory
++ `Matplotlib` to plot the results
 
-## More Details
-To present more details we will use a top-down approach.
+
+This work works in `Python 3+` 
+
+
+## Quick Start
+
+Run the example script:
+
+```bash
+python src/frama_use_case.py
+```
+
+This will:
+
+- Generate a FRAMA example image at `images/frama_example_plot.png`
+- Generate additional plots across noise and batch settings:
+    - `images/frama_plot_noise_0.1.png`
+    - `images/frama_plot_noise_0.2.png`
+    - `images/frama_plot_noise_0.5.png`
+    - `images/frama_plot_batch_10.png`
+    - `images/frama_plot_batch_50.png`
+    - `images/frama_plot_batch_100.png`
+
+
+## Explanation
+To present the inside workings we will use a top-down approach.
 The algorithm uses an adaptive low-pass filter with one term `alpha`.
 So it should look something like this:
 ```python
@@ -55,15 +80,15 @@ Now, if you go from down up it will result in the code inside `frama_numpy.py`.
 If still not satisfied from the explanation check the code and the References.
 ## Results Galery
 
-![First example](/images/estimation_example1.png)
+![First example](/images/frama_plot_noise_0.5.png)
 
-![Second example](/images/estimation_example2.png)
+![Second example](/images/frama_plot_noise_0.2.png)
 
-![Third example](/images/estimation_example3.png)
+![Third example](/images/frama_plot_noise_0.1.png)
 
-![Fourth example](/images/estimation_example4.png)
+![Fourth example](/images/frama_plot_batch_10.png)
 
-![Fifth example](/images/estimation_example5.png)
+![Fifth example](/images/frama_plot_batch_100.png)
 
 Feel free to send me your own examples! Thanks!
 

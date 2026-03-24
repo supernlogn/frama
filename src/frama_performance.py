@@ -22,11 +22,12 @@
  in numpy and utilizing it for
  performance.
 """
-__all__ = ['frama_perf']
+__all__ = ['frama_numpy_perf', 'fram_perf', 'frama_perf_torch']
 
 import numpy as np
 
-def frama_perf(InputPrice, batch):
+
+def frama_numpy_perf(InputPrice, batch):
     """
         frama with numpy for many datapoints
         InputPrice: The input time-series to estimate its frama per batch
@@ -65,5 +66,72 @@ def frama_perf(InputPrice, batch):
     # where the filter applies to the input
     for i in range(0, Length-2*batch, 1):
         Filt[i+1] = A[i] + S[i] * Filt[i]
+    return Filt
+
+
+def fram_perf(InputPrice, batch):
+    """Backward-compatible alias for frama_perf."""
+    return frama_numpy_perf(InputPrice, batch)
+
+
+def frama_perf_torch(InputPrice, batch, device=None, dtype=None):
+    """
+        frama with pytorch for many datapoints
+        InputPrice: The input time-series to estimate its frama per batch
+        batch: The batch of datapoints, where the N1 and N2 are calculated
+        device: Optional torch device (e.g. 'cpu', 'cuda')
+        dtype: Optional torch dtype (e.g. torch.float32)
+        See also: http://www.stockspotter.com/Files/frama.pdf
+    """
+    try:
+        import torch
+    except ImportError as exc:
+        raise ImportError('frama_perf_torch requires PyTorch. Install it with pip install torch') from exc
+
+    if batch <= 0:
+        raise ValueError('batch must be > 0')
+
+    # Convert any array-like input to a 1D torch tensor.
+    x = torch.as_tensor(InputPrice, device=device, dtype=dtype)
+    if x.ndim != 1:
+        x = x.reshape(-1)
+
+    length = x.shape[0]
+    if length <= 2 * batch:
+        return x.new_empty(0)
+
+    # Create rolling windows of length "batch".
+    windows = x.unfold(0, batch, 1)
+    H = windows.max(dim=1).values
+    L = windows.min(dim=1).values
+
+    # set the N-variables
+    b_inv = 1.0 / batch
+    N12 = (H - L) * b_inv
+    N1 = N12[:-1]
+    N2 = N12[1:]
+    N3 = (H[:-1] - L[:-1]) * b_inv
+
+    # calculate the fractal dimensions
+    Dimen = torch.zeros_like(N1)
+    Dimen_indices = (N1 > 0) & (N2 > 0) & (N3 > 0)
+    lg2_inv = 1.0 / torch.log2(torch.tensor(2.0, device=x.device, dtype=x.dtype))
+    d = (torch.log2(N1 + N2) - torch.log2(N3)) * lg2_inv
+    Dimen[Dimen_indices] = d[Dimen_indices]
+
+    # calculate the filter factor
+    alpha = torch.exp(-4.6 * (Dimen - 1))
+    alpha = torch.clamp(alpha, 0.1, 1)
+
+    Filt = x[:alpha.shape[0]].clone()
+
+    # Declare two variables to accelerate performance
+    S = 1 - alpha
+    A = alpha * x[:alpha.shape[0]]
+
+    # This is the overhead of all the computation where the filter applies to the input.
+    for i in range(0, length - 2 * batch, 1):
+        Filt[i + 1] = A[i] + S[i] * Filt[i]
+
     return Filt
 
